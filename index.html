@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title> Controle Financeiro Vanderleia </title>
+</head>
+
+<body>
+    <div class="container border border-gray rounded">
+        <div class="navbar-header header-background">
+            <img class="img-responsive" src="img/logo.png" alt="logo">
+        </div>
+        <form class="container-bottom">
+            <div class="form-group">
+                <div class="row container-bottom">
+                    <h1 class="text-center text"><strong>Controle Financeiro</strong></h1>
+                </div>
+                <div class="row">
+                    <h5 class="text-left text"><strong>Adicionar novo lançamento:</strong></h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="tipo">Tipo:</label>
+                        <select class="form-select" id="tipo">
+                          <option>Despesa</option>
+                          <option>Receita</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="descricao">Descricao: <strong>*</strong></label>
+                        <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Ex: agua, luz,telefone ..." required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="valor">Valor: <strong>*</strong> </label>
+                        <input type="number" min="0.00" step="any" class="form-control" name="valor" id="valor" placeholder="R$" required> <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="valor_desconto">Valor desconto:</label>
+                        <input type="number" min="0.00" step="any" class="form-control" id="valor_desconto" placeholder="R$">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="data_venc"> Data de Vencimento:<strong>*</strong></label>
+                        <input type="date" class="form-control" id="data_venc" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="data_liq">Data de Liquidação:</label>
+                        <input type="date" class="form-control" id="data_liq">
+                    </div>
+                    <div class="col-md-3 ">
+
+                        <button type="button" class="btn btn-primary btn-sm align-button" onclick="clicar()">Salvar</button>
+                    </div>
+                </div>
+                <div class="row mensagem" id="mensagem-validacao"> </div>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; It Lab</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+
+</html>

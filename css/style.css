@@ -1,0 +1,30 @@
+    .container {
+        margin-top: 10px;
+        background: rgb(253, 249, 249);
+    }
+    
+    .container-bottom {
+        margin-bottom: 100px;
+    }
+    
+    .align-button {
+        margin-top: 25px;
+    }
+    
+    .header-background {
+        background-color: rgb(39, 104, 245);
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-bottom: 20px;
+    }
+
+    #mensagem-validacao{
+        font-size: small;
+        color: red;
+    }
+    
+    footer {
+        color: black;
+        text-align: center;
+        font-style: italic;
+    }
