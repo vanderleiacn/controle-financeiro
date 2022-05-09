@@ -31,3 +31,4 @@ function checarCaractereEspecial(textoValidar) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     return specialChars.test(textoValidar);
 }
+
