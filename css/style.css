@@ -18,8 +18,8 @@
         margin-bottom: 20px;
     }
 
-    #mensagem-validacao{
-        font-size: small;
+    .mensagem-validacao{
+        font-size: x-small;
         color: red;
     }
     

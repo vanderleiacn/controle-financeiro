@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container border border-gray rounded">
+    <div class="container">
         <div class="navbar-header header-background">
             <img class="img-responsive" src="img/logo.png" alt="logo">
         </div>
@@ -27,37 +27,50 @@
                     <div class="col-md-3">
                         <label for="tipo">Tipo:</label>
                         <select class="form-select" id="tipo">
-                          <option>Despesa</option>
-                          <option>Receita</option>
+                            <option>Despesa</option>
+                            <option>Receita</option>
                         </select>
+                        <p></p>
 
                     </div>
                     <div class="col-md-6">
                         <label for="descricao">Descricao: <strong>*</strong></label>
-                        <input type="text" name="descricao" class="form-control" id="descricao" placeholder="Ex: agua, luz,telefone ..." required>
+                        <input type="text" name="descricao" class="form-control" id="descricao"
+                            placeholder="Ex: agua, luz,telefone ..." required>
+                        <p id="validacao_descricao" class="mensagem-validacao"></p>
                     </div>
                     <div class="col-md-3">
                         <label for="valor">Valor: <strong>*</strong> </label>
-                        <input type="number" min="0.00" step="any" class="form-control" name="valor" id="valor" placeholder="R$" required> <br>
+                        <input type="number" min="0.00" step="any" class="form-control" name="valor" id="valor"
+                            placeholder="R$" required>
+                            <p id="validacao_valor" class="mensagem-validacao"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="valor_desconto">Valor desconto:</label>
-                        <input type="number" min="0.00" step="any" class="form-control" id="valor_desconto" placeholder="R$">
+                        <input type="number" min="0.00" step="any" class="form-control" id="valor_desconto"
+                            placeholder="R$">
+                            <p></p>
                     </div>
                     <div class="col-md-3">
                         <label for="data_venc"> Data de Vencimento:<strong>*</strong></label>
                         <input type="date" class="form-control" id="data_venc" required>
+                        <p id="validacao_data_venc" class="mensagem-validacao"></p>
                     </div>
                     <div class="col-md-3">
                         <label for="data_liq">Data de Liquidação:</label>
                         <input type="date" class="form-control" id="data_liq">
+                        <p></p>
                     </div>
-                    <div class="col-md-3 ">
-
-                        <button type="button" class="btn btn-primary btn-sm align-button" onclick="clicar()">Salvar</button>
-                        <input type="reset" value= "limpar"/>
+                    <div class="col-md-1 ">
+                        <button type="button" class="btn btn-primary btn-sm align-button"
+                            onclick="clicar()">Salvar</button>  
+                            <p> </p>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="reset" class="btn btn-secondary btn-sm align-button">Limpar</button>
+                            <p> </p>            
                     </div>
                 </div>
                 <div class="row mensagem" id="mensagem-validacao"> </div>

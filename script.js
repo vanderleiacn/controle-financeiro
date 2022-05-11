@@ -1,26 +1,32 @@
 function clicar() {
-    var descricao = document.getElementById('descricao');
-    var valor = document.getElementById('valor');
-    var data_venc = document.getElementById('data_venc');
+    var descricao = document.getElementById("descricao");
+    var valor = document.getElementById("valor");
+    var data_venc = document.getElementById("data_venc");
 
-    var mensagem = window.document.getElementById('mensagem-validacao');
+    var mensagem = document.getElementById("mensagem-validacao");
     mensagem.innerHTML = "";
 
-    if ((descricao.value.length < 2) || (checarCaractereEspecial(descricao.value)))
-        mensagem.innerHTML = "<br>*Descriçao invalida! Deve conter mais que duas letras e não conter caracter especial.";
-        
-    if (valor.value < 2 || valor.value > 10000)
-        mensagem.innerHTML += "<br>*O valor deve ser entre R$ 2,00 e R$10.000,00 !";
-     
-    if ((data_venc.value.length == 0) || !checarData(new Date(data_venc.value)))
-        mensagem.innerHTML += "<br>*Data inválida!";
+    var validacaoDescricao = document.getElementById("validacao_descricao");
+    validacaoDescricao.innerHTML = "";
+    if ((descricao.value.trim().length < 2) || (checarCaractereEspecial(descricao.value)))
+        validacaoDescricao.innerHTML = "Descriçao invalida! Deve conter mais que duas letras e não conter caracter especial.";
 
+    var validacaoValor = document.getElementById("validacao_valor");
+    validacaoValor.innerHTML = "";
+    if (valor.value < 2 || valor.value > 10000)
+        validacaoValor.innerHTML = "O valor deve ser entre R$ 2,00 e R$10.000,00 !";
+
+    var validacaoDataVenc = document.getElementById("validacao_data_venc");
+    validacaoDataVenc.innerHTML = "";
+    if ((data_venc.value.length == 0) || !checarData(new Date(data_venc.value)))
+        validacaoDataVenc.innerHTML = "Data inválida!";
+    
     return;
 }
 
 function checarData(data) {
     if (data instanceof Date && !isNaN(data)) {
-        if (data.getUTCFullYear() < 2015 || data.getUTCFullYear()> 2022)
+        if (data.getUTCFullYear() < 2015 || data.getUTCFullYear() > 2022)
             return false
     }
 
@@ -28,7 +34,6 @@ function checarData(data) {
 }
 
 function checarCaractereEspecial(textoValidar) {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};":"\\|,.<>\/?~]/;
     return specialChars.test(textoValidar);
 }
-
