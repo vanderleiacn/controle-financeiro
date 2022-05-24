@@ -37,3 +37,11 @@ function checarCaractereEspecial(textoValidar) {
     const specialChars = /[`!@#$%^&*()_+\-=\[\]{};":"\\|,.<>\/?~]/;
     return specialChars.test(textoValidar);
 }
+
+/*function isSpecialChar(textoValidar){
+    for(let letra of textoValidar){
+        if(letra != ' ' && letra.toLowerCase()=== letra.toUpperCase()){
+            return true;
+        }
+    }
+}*/
