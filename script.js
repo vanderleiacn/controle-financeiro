@@ -8,7 +8,7 @@ function clicar() {
 
     var validacaoDescricao = document.getElementById("validacao_descricao");
     validacaoDescricao.innerHTML = "";
-    if ((descricao.value.trim().length < 2) || (checarCaractereEspecial(descricao.value)))
+    if ((descricao.value.trim().length < 2) || (isSpecialChar(descricao.value)))
         validacaoDescricao.innerHTML = "Descriçao invalida! Deve conter mais que duas letras e não conter caracter especial.";
 
     var validacaoValor = document.getElementById("validacao_valor");
@@ -33,15 +33,28 @@ function checarData(data) {
     return true
 }
 
-function checarCaractereEspecial(textoValidar) {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};":"\\|,.<>\/?~]/;
-    return specialChars.test(textoValidar);
+function isSpecialChar(textoValidar){
+    const specialChars = "!@#$%^&*"
+    for(let letra of textoValidar){
+        if(specialChars.includes(letra.toUpperCase()))
+            return true;
+    }
+    return false;
 }
+
+
+
+/*function checarCaractereEspecial(textoValidar) {
+    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};":"\\|,.<>\/?~]/; 
+    return specialChars.test(textoValidar);
+}*/        // SERVE PARA VALIDAR CARACTER ESPECIAL COM REGEX
+
+
 
 /*function isSpecialChar(textoValidar){
     for(let letra of textoValidar){
         if(letra != ' ' && letra.toLowerCase()=== letra.toUpperCase()){
-            return true;
+            return true;  
         }
     }
-}*/
+}*/    // SERVE PARA VALIDAR ESPAÇO EM BRANCO 
