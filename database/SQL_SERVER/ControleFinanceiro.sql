@@ -12,12 +12,13 @@ drop table if exists usuario;
 
 CREATE TABLE usuario(
 	idUsuario int IDENTITY(1,1) NOT NULL PRIMARY KEY (idUsuario),
+	nomeUsuario varchar(80),
 	nomeCompletoUsuario varchar(80),
 	senha varchar(20),
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL,
-	idUsuarioAlteracao int NULL,
+	usuarioInclusao varchar(80) NOT NULL,
+	usuarioAlteracao varchar(80) NULL,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -26,8 +27,8 @@ CREATE TABLE tipoCliente(
 	tipoCliente varchar(8) NOT NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80) NOT NULL  ,
+	usuarioAlteracao varchar(80) NULL  ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -37,8 +38,8 @@ CREATE TABLE tipoPlanoCliente(
 	tipoPlanoCliente varchar(20) NOT NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80)NOT NULL ,
+	usuarioAlteracao varchar(80) NULL ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -53,8 +54,8 @@ CREATE TABLE cliente(
 	cpfCnpj varchar(14) NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80) NOT NULL,
+	usuarioAlteracao varchar(80) NULL,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -64,8 +65,8 @@ CREATE TABLE tipoLancamento(
 	descricao varchar(20) NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80) NOT NULL,
+	usuarioAlteracao varchar(80) NULL ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -75,8 +76,8 @@ CREATE TABLE categoriaLancamento(
 	descricao varchar(200) NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao int NOT NULL,
+	usuarioAlteracao int NULL ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -85,8 +86,8 @@ CREATE TABLE tipoMeioPagamento(
 	TipoMeioPagamento varchar(20),
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80) NOT NULL ,
+	usuarioAlteracao varchar(80) NULL ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
@@ -104,27 +105,29 @@ CREATE TABLE Lancamento(
 	comprovante varchar(300) NULL,
 	dataHoraInclusao datetime NOT NULL,
 	dataHoraAlterecao datetime NULL,
-	idUsuarioInclusao int NOT NULL FOREIGN KEY (idUsuarioInclusao) references usuario(idUsuario),
-	idUsuarioAlteracao int NULL FOREIGN KEY (idUsuarioAlteracao) references usuario(idUsuario),
+	usuarioInclusao varchar(80) NOT NULL,
+	usuarioAlteracao varchar(80) NULL ,
 	ativo bit NOT NULL DEFAULT(1)
 )
 
 
 INSERT INTO usuario(
+	nomeUsuario,
  	nomeCompletoUsuario, 
 	senha, 
 	dataHoraInclusao, 
 	dataHoraAlterecao, 
-	idUsuarioInclusao, 
-	idUsuarioAlteracao, 
+	usuarioInclusao,
+	usuarioAlteracao, 
 	ativo 
 )
 VALUES(
+	'Vanderleia.n',
 	'vanderleia cavalcante do nascimento',
 	null,
 	'2022-06-02 14:53',
 	null,
-	1,
+	'Vanderleia.n',
 	null,
 	1
 )
@@ -134,16 +137,16 @@ INSERT INTO tipoCliente(
 	tipoCliente, 
 	dataHoraInclusao,
 	dataHoraAlterecao, 
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo 
 ) 
 VALUES(
-	2,
-	'PJ',
+	1,
+	'PF',
 	'2022-06-02 14:53',
 	null,
-	1,
+	'Vanderleia.n',
 	null,
 	1
 )
@@ -153,19 +156,14 @@ INSERT INTO  tipoPlanoCliente(
 	tipoPlanoCliente,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo
 )
-VALUES(
-	3,
-	'Premium',
-	'2022-06-10 12:48',
-	null,
-	1,
-	null,
-	1
-)
+VALUES
+(1,'Gratuito','2022-06-10 12:48',null,'Vanderleia.n',null,1),
+(2,'Basico','2022-06-10 12:48',null,'Vanderleia.n',null,1),
+(3,'Premium','2022-06-10 12:48',null,'Vanderleia.n',null,1)
 
 
 INSERT INTO cliente(
@@ -177,8 +175,8 @@ INSERT INTO cliente(
 	cpfCnpj,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo 
 )
 VALUES (
@@ -190,7 +188,7 @@ VALUES (
 	'23888123000175',
 	'2022-06-06 15:00',
 	null,
-	1,
+	'Vanderleia.n',
 	null,
 	1
 )
@@ -201,21 +199,14 @@ INSERT INTO tipoLancamento(
 	descricao,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo
 
 )
-VALUES (
-	3,
-	'despesa',
-	'valores pagos',
-	'2022-06-06 15:05',
-	null,
-	1,
-	null,
-	1
-)
+VALUES 
+(1,'despesa','valores pagos','2022-06-06 15:05',null,'Vanderleia.n',null,1),
+(2,'receita','valores recebidos','2022-06-06 15:05',null,'Vanderleia.n',null,1)
 
 INSERT INTO categoriaLancamento(
 	idCategoriaLancamento, 
@@ -223,37 +214,30 @@ INSERT INTO categoriaLancamento(
 	descricao,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo
 )
-VALUES(
-	6,
-	'Salario',
-	null,
-	'2022-06-10 12:40',
-	null,
-	1,
-	null,
-	1
-)
+VALUES
+(1,'conta de consumo',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1),
+(2,'imposto',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1),
+(3,'estudos',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1),
+(4,'alimentação',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1),
+(5,'gastos pessoais',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1),
+(6,'Salario',null,'2022-06-10 12:40',null,'Vanderleia.n',null,1)
 
 INSERT INTO tipoMeioPagamento(
 	TipoMeioPagamento,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo 
 )
-VALUES (
-	'trasnferencia',
-	'2022-06-10 12:30',
-	null,
-	1,
-	null,
-	1
-)
+VALUES 
+('dinheiro','2022-06-10 12:30',null,'Vanderleia.n',null,1),
+('cartão','2022-06-10 12:30',null,'Vanderleia.n',null,1),
+('trasnferencia','2022-06-10 12:30',null,'Vanderleia.n',null,1)
 
 INSERT INTO Lancamento(
    	idTipoLancamento,
@@ -268,8 +252,8 @@ INSERT INTO Lancamento(
 	comprovante,
 	dataHoraInclusao,
 	dataHoraAlterecao,
-	idUsuarioInclusao,
-	idUsuarioAlteracao,
+	usuarioInclusao,
+	usuarioAlteracao,
 	ativo
 )
 VALUES(
@@ -285,7 +269,7 @@ VALUES(
 	null,
 	'2022-06-06 15:05',
 	null,
-	1,
+	'Vanderleia.n',
 	null,
 	1
 )
@@ -317,9 +301,10 @@ SELECT * FROM  usuario
 
 
 
+ 
 
 
-
+ 
 
 
 
