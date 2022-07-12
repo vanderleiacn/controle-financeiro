@@ -18,7 +18,7 @@ GROUP BY tl.tipoLancamento, YEAR(dataPagamento)
 select 
 	tl.tipoLancamento,
 	RIGHT(CONVERT(varchar,dataPagamento,103), 7) MesAnoPagamento,
-	SUM(valorPago),
+	SUM(valorPago) ValorPago,
 	SUM(valorOriginal) TotalOriginal,
 	COUNT(1) QtdLancamentos
 from
