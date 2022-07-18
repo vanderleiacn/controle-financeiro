@@ -14,6 +14,7 @@ from
 		on la.idTipoLancamento = tl.idTipoLancamento
 GROUP BY tl.tipoLancamento, YEAR(dataPagamento)
 
+
 --Relatório de lançamento agrupado por Ano/Mes e Tipo de Lançamento
 select 
 	tl.tipoLancamento,
@@ -39,6 +40,7 @@ from
 	Lancamento la
 GROUP BY RIGHT(CONVERT(varchar,dataPagamento,103), 7)
 
+
 --Relatório de lançamento agrupado por Cliente, Tipo de Lançamento e Ano
 select 
 	cl.nomeCompleto,
@@ -59,6 +61,7 @@ GROUP BY
 	cl.cpfCnpj,
 	tc.tipoCliente, 
 	YEAR(dataPagamento)
+
 
 --Relatório de lançamento agrupado por Cliente, Ano/Mes e Receita/Despesa
 select 
@@ -86,6 +89,7 @@ GROUP BY
 	cl.cpfCnpj,
 	tc.tipoCliente,
 	RIGHT(CONVERT(varchar,dataPagamento,103), 7)
+
 
 
 --Relatório de clientes por Tipo de Plano
